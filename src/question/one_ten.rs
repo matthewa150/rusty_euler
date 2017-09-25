@@ -1,3 +1,4 @@
+extern crate primes;
 
 pub fn q_one () -> i32 {
     let mut sum: i32 = 0;
@@ -32,4 +33,10 @@ fn fibonacci(num: i32) -> i64 {
         3 => 3,
         _ => fibonacci(num-1)+fibonacci(num-2)
     }
+}
+
+pub fn q_three() -> u64 {
+    let mut pset = primes::PrimeSet::new();
+    let pset:Vec<u64> = pset.prime_factors(600851475143);
+    pset[pset.len()-1]
 }
