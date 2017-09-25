@@ -40,3 +40,23 @@ pub fn q_three() -> u64 {
     let pset:Vec<u64> = pset.prime_factors(600851475143);
     pset[pset.len()-1]
 }
+
+pub fn q_four() -> u64{
+    let mut winner: u64 = 0;
+    for a in 100..1000 {
+        for b in 100..1000 {
+            let orig = a*b;
+            let mut flip = String::from(format!("{}",orig));
+            unsafe {
+                let mut flip = flip.as_mut_vec();
+                flip.reverse();
+                let flip = String::from_utf8_lossy(flip).parse::<u32>().expect("Ooops");
+                if orig == flip && (flip as u64) >winner {
+                    winner = flip as u64;
+                }
+            }
+
+        }
+    }
+    winner
+}
