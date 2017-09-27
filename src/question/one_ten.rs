@@ -1,4 +1,7 @@
 extern crate primes;
+extern crate num;
+
+use std::f64;
 
 pub fn q_one () -> i32 {
     let mut sum: i32 = 0;
@@ -9,7 +12,6 @@ pub fn q_one () -> i32 {
     }
     sum
 }
-
 
 pub fn q_two() -> i64{
     let mut sum: i64 = 0;
@@ -59,4 +61,60 @@ pub fn q_four() -> u64{
         }
     }
     winner
+}
+
+pub fn q_five() -> i64{
+    let mut winner = 2520;
+    loop {
+        let mut sln : bool = true;
+        for x in 1..21 {
+            if winner % x != 0 {
+                sln = false;
+                break;
+            }
+        }
+
+        if sln {
+            return winner;
+        }
+        winner+=2520;
+    }
+}
+
+
+pub fn q_six() -> i64{
+    let mut sum_squares = 0_f64;
+
+    let mut x:f64 = 1_f64;
+
+    while x<=100_f64 {
+        sum_squares += x.powi(2);
+        x+=1_f64;
+    }
+
+    x = 1_f64;
+
+    let mut square_sum = 0_f64;
+
+    while x<=100_f64 {
+        square_sum += x;
+        x+=1_f64;
+    }
+
+
+    square_sum = square_sum.powi(2);
+
+    let result = sum_squares - square_sum;
+    let result = result.abs();
+
+    (result as i64)
+}
+
+
+pub fn q_seven() -> i64 {
+
+    let mut pset = primes::PrimeSet::new();
+    let n = pset.get(10_001 - 1);
+
+    (n as i64)
 }
